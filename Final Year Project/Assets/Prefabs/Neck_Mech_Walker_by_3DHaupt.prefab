@@ -3835,7 +3835,7 @@ GameObject:
   - component: {fileID: 5614979554601992396}
   m_Layer: 0
   m_Name: Neck_Mech_Walker_by_3DHaupt
-  m_TagString: Untagged
+  m_TagString: PlacementObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

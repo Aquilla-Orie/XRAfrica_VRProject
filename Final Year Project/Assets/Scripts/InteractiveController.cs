@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InteractiveController : MonoBehaviour
@@ -8,8 +9,8 @@ public class InteractiveController : MonoBehaviour
     bool isRotating;
 
     //[SerializeField]
-    //GameObject mechanim;
-    //Animator mechanimAnimator;
+    List<GameObject> mechanims;
+    Animator mechanimAnimator;
 
     bool isInstPanelOpen;
     [SerializeField]
@@ -23,7 +24,9 @@ public class InteractiveController : MonoBehaviour
         isInstPanelOpen = false;
         isRotating = false;
 
-        //mechanimAnimator = mechanim.GetComponent<Animator>();
+        mechanims = new List<GameObject>();
+
+        
         instantiatePanelAnimator = instantiatePanel.GetComponent<Animator>();
     }
 
@@ -35,8 +38,15 @@ public class InteractiveController : MonoBehaviour
 
     public void AnimateMech()
     {
-        //isObjectOpen = !isObjectOpen;
-        //mechanimAnimator.SetBool("isOpen", isObjectOpen);
+        mechanims.Clear();
+        mechanims = GameObject.FindGameObjectsWithTag("PlacementObject").ToList();
+
+        foreach (GameObject mechanim in mechanims)
+        {
+            mechanimAnimator = mechanim.GetComponent<Animator>();
+            isObjectOpen = !isObjectOpen;
+            mechanimAnimator.SetBool("isOpen", isObjectOpen);
+        }
     }
 
     public void RotateMech()
