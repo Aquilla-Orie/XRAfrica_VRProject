@@ -19,10 +19,12 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Screen.orientation = ScreenOrientation.Portrait;
+        Screen.orientation = ScreenOrientation.Portrait; //Set the screen resolution to Portrait mode.
         SetPanelActive(LOGINPANEL);
     }
 
+
+    //Loops through all panels and sets active a specific panel while setting all others to false
     void SetPanelActive(string panelName)
     {
         foreach(GameObject panel in Panels)

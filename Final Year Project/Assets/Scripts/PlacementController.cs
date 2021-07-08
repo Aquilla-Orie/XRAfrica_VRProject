@@ -7,6 +7,7 @@ using UnityEngine.XR.ARFoundation;
 [RequireComponent(typeof(ARRaycastManager))]
 public class PlacementController : MonoBehaviour
 {
+
     [SerializeField]
     private GameObject placedPrefab;
 
@@ -24,7 +25,7 @@ public class PlacementController : MonoBehaviour
         }
     }
 
-    private ARRaycastManager arRayCastManager;
+    private static ARRaycastManager arRayCastManager;
 
     void Awake()
     {
@@ -55,5 +56,16 @@ public class PlacementController : MonoBehaviour
 
             Instantiate(placedPrefab, hitPose.position, hitPose.rotation);
         }
+    }
+
+    public static Pose RayCastToWorld()
+    {
+        Pose hitPose;
+        if (arRayCastManager.Raycast(Camera.main.transform.position, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+        {
+            return hits[0].pose;
+        }
+
+        return default;
     }
 }

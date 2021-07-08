@@ -3833,6 +3833,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5614979554611621566}
   - component: {fileID: 5614979554601992396}
+  - component: {fileID: -5542913459972419238}
+  - component: {fileID: 7938164606097811139}
   m_Layer: 0
   m_Name: Neck_Mech_Walker_by_3DHaupt
   m_TagString: PlacementObject
@@ -3875,6 +3877,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-5542913459972419238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614979554611524254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d4bb6a9a4884364faacd5d15044cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!320 &7938164606097811139
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614979554611524254}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: d0ff267667052344fb3c3f175690e0ef, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 7596016873279642637, guid: d0ff267667052344fb3c3f175690e0ef, type: 2}
+    value: {fileID: 5614979554601992396}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &5614979554611524256
 GameObject:
   m_ObjectHideFlags: 0

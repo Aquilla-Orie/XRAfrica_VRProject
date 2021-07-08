@@ -2,75 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.ARFoundation;
 
 public class IntantiatePanel : MonoBehaviour
 {
     [SerializeField]
-    GameObject[] objects;
-    
+    PlacementObject[] objects;
 
     [SerializeField]
-    Button obj1Button;
-    [SerializeField]
-    Button obj2Button;
-    [SerializeField]
-    Button obj3Button;
+    GameObject controlPanel;
+
+    ButtonController buttonController;
 
     [SerializeField]
     GameObject ARCamera;
 
     GameObject selectedObject;
-    public void InstantiateObject1()
-    {
-        GameObject obj1 = Instantiate(objects[0], new Vector3(ARCamera.transform.position.x, ARCamera.transform.position.y, ARCamera.transform.position.z + 3), Quaternion.identity);
-        obj1Button.interactable = true;
-    }
-    public void InstantiateObject2()
-    {
-        GameObject obj2 = Instantiate(objects[1], new Vector3(ARCamera.transform.position.x, ARCamera.transform.position.y + 1, ARCamera.transform.position.z + 3), Quaternion.identity);
-        obj2Button.interactable = true;
-    }
-    public void InstantiateObject3()
-    {
-        GameObject obj3 = Instantiate(objects[2], new Vector3(ARCamera.transform.position.x, ARCamera.transform.position.y - 1, ARCamera.transform.position.z + 3), Quaternion.identity);
-        obj3Button.interactable = true;
-    }
 
-    public void SelectObject1()
+    private void Start()
     {
-        selectedObject = objects[0];
-        foreach (GameObject obj in objects)
-        {
-            if (obj != selectedObject)
-            {
-                obj.GetComponent<Material>().color = Color.white;
-            }
-            selectedObject.GetComponent<Material>().color = Color.yellow;
-        }
+        buttonController = Resources.Load<ButtonController>("ObjButton");
     }
-    public void SelectObject2()
+    public void InstantiateObject(int objectIndex)
     {
-        selectedObject = objects[1];
-        foreach (GameObject obj in objects)
-        {
-            if (obj != selectedObject)
-            {
-                obj.GetComponent<Material>().color = Color.white;
-            }
-            selectedObject.GetComponent<Material>().color = Color.yellow;
-        }
+        PlacementObject obj1 = Instantiate(objects[objectIndex], PlacementController.RayCastToWorld().position + Vector3.one, Quaternion.identity);
+        ButtonController button1 = Instantiate(buttonController);
+        button1.transform.parent = controlPanel.transform;
+        button1.obj = obj1;
     }
-    public void SelectObject3()
-    {
-        selectedObject = objects[3];
-        foreach (GameObject obj in objects)
-        {
-            if (obj != selectedObject)
-            {
-                obj.GetComponent<Material>().color = Color.white;
-            }
-            selectedObject.GetComponent<Material>().color = Color.yellow;
-        }
-    }
-
 }
